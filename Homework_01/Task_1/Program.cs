@@ -29,6 +29,7 @@ namespace Task_1
             Console.ReadKey();
             Console.WriteLine("\nСумма баллов: " + sumPoints.ToString("#"));
             Console.WriteLine("Средний балл: " + averagePoints.ToString("#.##"));
+            Console.ReadKey();
         }
     }
 }

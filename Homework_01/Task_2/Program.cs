@@ -14,6 +14,7 @@
             Console.WriteLine("Сумма баллов: " + sumPoints.ToString("#.##"));
             Console.ReadKey();
             Console.WriteLine("Средний балл: " + averagePoints.ToString("#.##"));
+            Console.ReadKey();
 
         }
     }
