@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpHomework", "CSharpHomework\CSharpHomework.csproj", "{D4C9C37A-5B79-46A3-9C9B-7E1C3D273DE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task_1", "CSharpHomework\Task_1.csproj", "{D4C9C37A-5B79-46A3-9C9B-7E1C3D273DE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Homework_01", "Homework_01", "{6D0EC4D1-941D-4578-A811-B1D7D31A42AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D4C9C37A-5B79-46A3-9C9B-7E1C3D273DE8} = {6D0EC4D1-941D-4578-A811-B1D7D31A42AC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7F60E55D-B530-4699-BC64-0D9723FCB7CF}
