@@ -11,7 +11,6 @@
             float sumPoints = mathPoints + informaticsPoints + physicsPoints;
             float averagePoints = (sumPoints) / 3;
 
-            Console.ReadKey();
             Console.WriteLine("Сумма баллов: " + sumPoints.ToString("#.##"));
             Console.ReadKey();
             Console.WriteLine("Средний балл: " + averagePoints.ToString("#.##"));
