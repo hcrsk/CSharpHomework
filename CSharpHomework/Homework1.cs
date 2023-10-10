@@ -12,7 +12,7 @@
             float PhysicsUniversalStateExamPoints = 49F;
 
             Console.WriteLine(string.Format("Меня зовут {0}, мне {1} года.", fullName, age));
-
+            Console.ReadKey();
         }
     }
 }
