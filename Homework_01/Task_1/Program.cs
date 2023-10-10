@@ -13,13 +13,13 @@ namespace Task_1
             float mathPoints = 64F;
             float informaticsPoints = 83F;
             float physicsPoints = 49F;
+            float sumPoints = mathPoints + informaticsPoints + physicsPoints;
+            float averagePoints = (sumPoints) / 3;
 
             Console.WriteLine(pattern, fullName, age, email);
 
-            
-            float sumPoints = mathPoints + informaticsPoints + physicsPoints;
-            float averagePoints = (sumPoints) / 3;
             pattern = "{0,12} {1,13}";
+
             Console.ReadKey();
             Console.WriteLine(pattern, "Предмет", "Баллы по ЕГЭ");
             Console.WriteLine(pattern, "Математика", mathPoints.ToString("#"));
@@ -27,8 +27,8 @@ namespace Task_1
             Console.WriteLine(pattern, "Физика", physicsPoints.ToString("#"));
 
             Console.ReadKey();
-            Console.WriteLine("\nСумма баллов: " + sumPoints.ToString("#"));
-            Console.WriteLine("Средний балл: " + averagePoints.ToString("#.##"));
+            Console.WriteLine($"\nСумма баллов: {sumPoints.ToString("#")}");
+            Console.WriteLine($"Средний балл: { averagePoints.ToString("#.##")}");
             Console.ReadKey();
         }
     }
