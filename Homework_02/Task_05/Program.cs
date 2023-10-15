@@ -17,6 +17,7 @@
                 int estimatedNumber;
                 if (input == "") {
                     Console.WriteLine($"Было загадано число {secretNumber}!");
+                    Console.ReadKey();
                     break;
                 }
                 else
@@ -25,6 +26,7 @@
                     if (secretNumber == estimatedNumber)
                     {
                         Console.WriteLine($"Вы угадали! Загаданное число {secretNumber}");
+                        Console.ReadKey();
                         break;
                     }
                     else if (secretNumber > estimatedNumber)
