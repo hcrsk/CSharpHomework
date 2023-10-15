@@ -24,7 +24,7 @@
                     estimatedNumber = Convert.ToInt32(input);
                     if (secretNumber == estimatedNumber)
                     {
-                        Console.WriteLine("Вы угадали!");
+                        Console.WriteLine($"Вы угадали! Загаданное число {secretNumber}");
                         break;
                     }
                     else if (secretNumber > estimatedNumber)
