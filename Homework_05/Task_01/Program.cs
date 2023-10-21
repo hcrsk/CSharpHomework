@@ -65,7 +65,7 @@
             {
                 for (int i = 0; i < 7; i++)
                 {
-                    char separatist = '#'; // сепаратист за решеткой
+                    char separatist = '#'; 
                     switch (i)
                     {
                         case 0: Console.Write("Id пользователя: "); break;
