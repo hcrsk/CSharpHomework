@@ -5,7 +5,10 @@
         static void Main(string[] args)
         {
             Repository repository = new Repository();
-            repository.GetWorkerById(3);
+            //repository.GetWorkerById(3);
+            Worker worker = new Worker();
+            repository.AddWorker(worker);
+            //repository.GetAllWorkers();
             Console.ReadKey();
         }
     }
