@@ -4,10 +4,6 @@ namespace Task_01
 {
     internal class Repository
     {
-        //Просмотр всех записей.+
-        //Просмотр одной записи. Функция должна на вход принимать параметр ID записи, которую необходимо вывести на экран.+
-        //Создание записи.
-        //Удаление записи.
         //Загрузка записей в выбранном диапазоне дат.
 
         private string _path;
@@ -36,19 +32,18 @@ namespace Task_01
         /// <returns>возвращается Worker с запрашиваемым Id</returns>
         /// Следует учитывать что в нашем контексте Id является первичным ключом таблицы
         /// и соответствует, по крайней мере, 1NF и каждое значение id в таблице гарантированно уникально.
-        public Worker GetWorkerById(int id)
+        public Worker? GetWorkerById(int id)
         {
             for (int i = 0; i < _workers.Length; i++)
             {
+                if (_workers[i].Id == id)
                 {
-                    if (_workers[i].Id == id)
-                    {
-                        Worker.PrintWorker(_workers[i]);
-                        return _workers[i];
-                    }
+                    Worker.PrintWorker(_workers[i]);
+                    return _workers[i];
                 }
             }
-            return _workers[-1];
+            Console.WriteLine($"Пользователь с id {id} не найден");
+            return null;
         }
 
         private void PrintWorkers(Worker[] workers)
@@ -68,26 +63,33 @@ namespace Task_01
         {
             Array.Resize(ref _workers, _workers.Length + 1);
             _workers[_workers.Length - 1] = worker;
+            _workers[_workers.Length - 1].CreateTime = DateTime.Now;
             using (StreamWriter employeeStream = File.AppendText(_path))
             {
-                employeeStream.WriteLine(ParseWorker(worker));
+                Console.WriteLine($"Работник с Id {worker.Id} создан!");
+                employeeStream.Write(ParseWorker(worker));
             }
         }
 
-        private void WriteWorkers()
+        private void WriteWorkers(Worker[] workers)
         {
             using (StreamWriter employeeStream = new StreamWriter(_path))
             {
-                foreach (Worker worker in _workers)
+                foreach (Worker worker in workers)
                 {
                     employeeStream.WriteLine(ParseWorker(worker));
                 }
             }
         }
 
+        private void WriteWorkers()
+        {
+            WriteWorkers(_workers);
+        }
+
         private string ParseWorker(Worker worker)
         {
-            string pattern = "{0}#{1}#{2}#{3}#{4}#{5}#{6}\n";
+            string pattern = "{0}#{1}#{2}#{3}#{4}#{5}#{6}";
             string workerString = string.Format(pattern,
                 worker.Id,
                 worker.CreateTime,
@@ -101,15 +103,29 @@ namespace Task_01
 
         public void DeleteWorker(int id)
         {
-            for (int i = 0; i < _workers.Length; i++)
+            Worker[] workers = new Worker[_workers.Length];
+            bool workerFound = false;
+            for (int i = 0, j = 0; i < _workers.Length; i++)
             {
+                if (_workers[i].Id == id)
                 {
-                    if (_workers[i].Id == id)
-                    {
-
-
-                    }
+                    workerFound = true;
+                    continue;
                 }
+                workers[j] = _workers[i];
+                j++;
+            }
+            if (workerFound)
+            {
+                Console.WriteLine($"Работник с Id {id} удалён!");
+                Array.Resize(ref workers, _workers.Length - 1);
+                Array.Resize(ref _workers, _workers.Length - 1);
+                workers = _workers;
+                WriteWorkers(workers);
+            }
+            else
+            {
+                Console.WriteLine($"Работника с Id {id} нет в справочнике «Сотрудники»");
             }
         }
 
@@ -140,10 +156,14 @@ namespace Task_01
             }
             else
             {
-                Console.WriteLine($"Файл  {_path} со списком сотрудников не существует!\n" +
-                    $" Хотите создать файл {_path} для списка сотрудников? Да/Нет");
+                Console.WriteLine($"Файл {_path} не существует!\n" +
+                    $"Хотите создать файл {_path} для списка сотрудников? Да/Нет");
                 if (Console.ReadLine() == "Да")
-                { File.Create(_path); }
+                {
+                    using (File.Create(_path))
+                    { }
+                    LoadWorkers();
+                }
                 else
                 {
                     Environment.Exit(0);
