@@ -58,7 +58,7 @@
         /// <summary>
         /// Метод вносит данные нового сотрудника в конец списка сотрудников
         /// </summary>
-        /// <param name="fileDirectory"></param>
+        /// <param name="fileDirectory">Путь к файлу</param>
         static void InsertEmployeeData(string fileDirectory)
         {
             using (StreamWriter employeeStream = File.AppendText(fileDirectory))
