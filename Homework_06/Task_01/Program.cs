@@ -4,11 +4,22 @@ namespace Task_01
 {
     internal class Program
     {
+        public static void Help()
+        {
+            Console.WriteLine("Для загрузки из файла и просмотра всех записей введите: 0\n" +
+                "Что бы добавить запись введите: 1\n" +
+                "Что бы удалить запись введите: 2\n" +
+                "Что бы получить данные работника по Id введите: 3\n" +
+                "Что бы получить данные о работниках между двумя датами введите: 4\n" +
+                "Что бы получить отстортированый список работников по заданым параметрам введите 5\n" +
+                "Что бы выйти из программы введите: 6\n" +
+                "Для вывода данной справки нажмите Enter\n");
+        }
         static void Main(string[] args)
         {
             Repository repository = new Repository();
 
-            ConsoleInteractions.Help();
+            Help();
 
             bool job = true;
             DateTime dateFrom = new DateTime(1990, 1, 1);
@@ -38,7 +49,7 @@ namespace Task_01
                         ConsoleInteractions.PrintWorkers(repository.SortWokersBy(repository.GetAllWorkers(), "id", "desc")); 
                         break;
                     case "6": job = false; break;
-                    default: ConsoleInteractions.Help(); break;
+                    default: Help(); break;
                 }
             }
         }
