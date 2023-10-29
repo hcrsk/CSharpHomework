@@ -31,11 +31,5 @@ namespace Task_01
             this(Convert.ToInt32(data[0]), Convert.ToDateTime(data[1]), data[2], Convert.ToInt32(data[3]), Convert.ToInt32(data[4]), Convert.ToDateTime(data[5]), data[6])
         {
         }
-
-        public static void PrintWorker(Worker worker)
-        {
-            string pattern = "|{0, 3}|{1, 22}|{2, 32}|{3, 7}|{4, 4}|{5, 22}|{6, 16}|";
-            Console.WriteLine(pattern, worker.Id, worker.CreateTime, worker.Fullname, worker.Age, worker.Height, worker.BirthDate, worker.BirthPlace);
-        }
     }
 }
